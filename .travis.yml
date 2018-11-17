@@ -2,11 +2,10 @@ language: python
 python:
 - 3.7
 env:
--SERVER_IP_ADDRESS=13.239.57.170
+- SERVER_IP_ADDRESS=13.239.57.170
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_dbabf1ba6eef_key -iv $encrypted_dbabf1ba6eef_iv
-  -in deploy_key.enc -out ./deploy_key -d
+- openssl aes-256-cbc -K $encrypted_dbabf1ba6eef_key -iv $encrypted_dbabf1ba6eef_iv -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
